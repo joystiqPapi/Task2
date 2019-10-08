@@ -34,7 +34,7 @@ namespace ernestMosebekoaPOE
         }
 
         //abstract method definitions
-        public abstract void move();
+        public abstract void move(int xPosition, int yPosition);
         public abstract void combat();
         public abstract bool withinRange();
         public abstract void returnPosition();
