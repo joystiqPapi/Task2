@@ -11,34 +11,30 @@ namespace ernestMosebekoaPOE
         private const int meleeAttackRange = 1;
         private const int meleeAttack = 5;
         private const int meleeSpeed = 1;
+        private const int initialMelleHealth = 100;
+        private const bool inMeleeUnitAttacking = false;
         private const String meleeTeamName = "MeleeTeam";
         private const Char meleeUnitSymbol = 'M';
-        
-        public int XPosition { get => base.xPosition; set => base.xPosition = value; }
-        public int YPosition { get => base.yPosition; set => base.yPosition = value; }
-        public int Health { get => base.health; set => base.health = value; }
+        private int XPosition { get => base.xPosition; set => base.xPosition = value; }
+        private int YPosition { get => base.yPosition; set => base.yPosition = value; }
+        private int Health { get => base.health; set => base.health = value; }
         public int MaxHealth { get => base.maxHealth; }
-        public int Speed { get => base.speed; set => base.speed = value; }
-        public int Attack { get => base.attack; set => base.attack = value; }
-        public int AttackRange { get => base.attackRange; set => base.attackRange = value; }
-        public string Team { get => base.team; set => base.team = value; }
-        public char UnitSymbol { get => base.unitSymbol; set => base.unitSymbol = value; }
-        public bool IsAttacking { get => base.isAttacking; set => base.isAttacking = value; }
-
-        Random r = new Random();
-        //Now the two variables in red in theory shouldn't be passed in the creation of the unit'
-        public MeleeUnit(int xPosition, int yPosition, int meleeHealth, bool isMeleeAttacking) : base(xPosition, yPosition, meleeHealth, meleeSpeed, meleeAttack, meleeAttackRange, meleeTeamName, meleeUnitSymbol, isMeleeAttacking)
+        private int Speed { get => base.speed; set => base.speed = value; }
+        private int Attack { get => base.attack; set => base.attack = value; }
+        private int AttackRange { get => base.attackRange; set => base.attackRange = value; }
+        private string Team { get => base.team; set => base.team = value; }
+        private char UnitSymbol { get => base.unitSymbol; set => base.unitSymbol = value; }
+        private bool IsAttacking { get => base.isAttacking; set => base.isAttacking = value; }
+        
+        public MeleeUnit(int xPosition, int yPosition) : base(xPosition, yPosition, initialMelleHealth, meleeSpeed, meleeAttack, meleeAttackRange, meleeTeamName, meleeUnitSymbol, inMeleeUnitAttacking)
         {
-            base.xPosition = xPosition;
-            base.yPosition = yPosition;
-            base.health = Health;
-            base.speed = speed;
-            int enemyXPosition = r.Next(1, 20);
-            int enemyYposition = r.Next(1, 20);
+            XPosition = xPosition;
+            YPosition = yPosition;
         }
+
         public override void combat()
         {
-      //
+            
         }
         public override bool isDead()
         {
@@ -49,25 +45,14 @@ namespace ernestMosebekoaPOE
             }
             return unitDead;
         }
-        public override void move()
+        public override void move(int newXPosition, int newYPosition)
         {
-            ///move to a new position
-            /////first find the unit position
-            /// //getting unit position and enemy position,THAT PYTHAGORAS SHIT MAN
-            yPosition = r.Next(1, 20);
-            xPosition = r.Next(1, 20);
-            for (int y = 0; y < 20; y++)
-            {
-                for (int x = 0; x < 20; x++)
-                {  
-                    MeleeUnit[,] unitPosition = new MeleeUnit[yPosition, xPosition];
-                   
-                }
-            }
+            XPosition = newXPosition;
+            YPosition = newYPosition;
         }
         public override void returnPosition()
         {
-         //can you see?
+            
         }
         public override string toString()
         {
