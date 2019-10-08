@@ -8,6 +8,12 @@ namespace ernestMosebekoaPOE
 {
     class MeleeUnit : Unit
     {
+        private const int meleeAttackRange = 1;
+        private const int meleeAttack = 5;
+        private const int meleeSpeed = 1;
+        private const String meleeTeamName = "MeleeTeam";
+        private const Char meleeUnitSymbol = 'M';
+        
         public int XPosition { get => base.xPosition; set => base.xPosition = value; }
         public int YPosition { get => base.yPosition; set => base.yPosition = value; }
         public int Health { get => base.health; set => base.health = value; }
@@ -20,7 +26,8 @@ namespace ernestMosebekoaPOE
         public bool IsAttacking { get => base.isAttacking; set => base.isAttacking = value; }
 
         Random r = new Random();
-        public MeleeUnit(int xPosition, int yPosition) : base(xPosition, yPosition, 100, 1, 5, 1, "Melee", 'M', false)
+        //Now the two variables in red in theory shouldn't be passed in the creation of the unit'
+        public MeleeUnit(int xPosition, int yPosition, int meleeHealth, bool isMeleeAttacking) : base(xPosition, yPosition, meleeHealth, meleeSpeed, meleeAttack, meleeAttackRange, meleeTeamName, meleeUnitSymbol, isMeleeAttacking)
         {
             base.xPosition = xPosition;
             base.yPosition = yPosition;
@@ -28,17 +35,7 @@ namespace ernestMosebekoaPOE
             base.speed = speed;
             int enemyXPosition = r.Next(1, 20);
             int enemyYposition = r.Next(1, 20);
-
-            
-
-           
-
-
-  
         }
-
-       
-
         public override void combat()
         {
       //
@@ -67,7 +64,6 @@ namespace ernestMosebekoaPOE
                    
                 }
             }
-
         }
         public override void returnPosition()
         {
@@ -78,7 +74,6 @@ namespace ernestMosebekoaPOE
          //output message
          string sentence = "I am Melee Unit";
          return sentence;
-          
         }
         public override bool withinRange()
         {
@@ -90,7 +85,6 @@ namespace ernestMosebekoaPOE
                 withinRange = true;
             }
             return withinRange;
-
         }
     }
 }

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ernestMosebekoaPOE
 {
     abstract class Unit
-    {   //field protected definitions
+    {
+        //field protected definitions
         protected int xPosition;
         protected int yPosition;
         protected int health;
@@ -22,7 +19,8 @@ namespace ernestMosebekoaPOE
         Random r = new Random();
 
 
-        public Unit(int xPosition, int yPosition, int health, int speed, int attack, int attackRange, string team, char unitSymbol,bool isAttacking)
+        protected Unit(int xPosition, int yPosition, int health, int speed, int attack, int attackRange, string team,
+            char unitSymbol, bool isAttacking)
         {
             this.xPosition = xPosition;
             this.yPosition = yPosition;
@@ -33,18 +31,14 @@ namespace ernestMosebekoaPOE
             this.team = team;
             this.unitSymbol = unitSymbol;
             this.isAttacking = isAttacking;
-
-            
         }
-                
+
         //abstract method definitions
-        public  abstract void move();
-       public abstract void combat();
-       public abstract bool withinRange();
-       public abstract void returnPosition();
-       public abstract bool isDead();
-       public abstract string toString();
-
-
+        public abstract void move();
+        public abstract void combat();
+        public abstract bool withinRange();
+        public abstract void returnPosition();
+        public abstract bool isDead();
+        public abstract string toString();
     }
 }
