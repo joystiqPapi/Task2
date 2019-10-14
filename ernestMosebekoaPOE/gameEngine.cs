@@ -10,7 +10,6 @@ namespace ernestMosebekoaPOE
     { //class variable
         int numberOfRoundsCompleted = 0;
         private Map battleField;
-
         public gameEngine(Map battleField)
         {
             this.battleField = battleField;
