@@ -1,6 +1,6 @@
 ﻿namespace ernestMosebekoaPOE
 {
-    abstract class Unit
+    public abstract class Unit
     {
         //field protected definitions
         protected int xPosition;
@@ -13,9 +13,10 @@
         protected string team;
         protected char unitSymbol;
         protected bool isAttacking;
+        protected string unitName;
         
         protected Unit(int xPosition, int yPosition, int health, int speed, int attack, int attackRange, string team,
-            char unitSymbol, bool isAttacking)
+            char unitSymbol, bool isAttacking, string unitName)
         {
             this.xPosition = xPosition;
             this.yPosition = yPosition;
@@ -26,6 +27,7 @@
             this.team = team;
             this.unitSymbol = unitSymbol;
             this.isAttacking = isAttacking;
+            this.unitName = unitName;
         }
 
         //abstract method definitions
@@ -37,5 +39,6 @@
         public abstract string toString();
         public abstract int returnAttackStrength();
         public abstract char returnSymbol();
+        public abstract string returnUnitName();
     }
 }

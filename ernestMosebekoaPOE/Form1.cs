@@ -6,12 +6,13 @@ namespace ernestMosebekoaPOE
     public partial class Form1 : Form, FormView
     {
         private const int numberOfUnits = 8;
+        private const int numberOfBuildings = 4;
         private gameEngine engine;
         private Map map;
         public Form1()
         {
             InitializeComponent();
-            map = new Map(this,numberOfUnits);
+            map = new Map(this,numberOfUnits, numberOfBuildings);
             engine = new gameEngine(map);
         }
 
