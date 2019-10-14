@@ -7,9 +7,10 @@
         private const int MeleeSpeed = 1;
         private const int InitialMelleHealth = 100;
         private const bool InMeleeUnitAttacking = false;
-        private const string MeleeTeamName = "MeleeTeam";
         private const char MeleeUnitSymbol = 'M';
         
+        public const string FOOT_SOLDIER_UNIT_NAME= "Foot Soldier"; 
+        public const string KNIGHT_UNIT_NAME = "Knight"; 
         private string unitActivity;
 
         public int XPosition
@@ -70,12 +71,12 @@
             get => base.isAttacking;
             set => base.isAttacking = value;
         }
+        
+        public string UnitName { get => base.unitName; set => base.unitName = value; }
 
-        public MeleeUnit(int xPosition, int yPosition) : base(xPosition, yPosition, InitialMelleHealth, MeleeSpeed,
-            MeleeAttack, MeleeAttackRange, MeleeTeamName, MeleeUnitSymbol, InMeleeUnitAttacking)
+        public MeleeUnit(int xPosition, int yPosition, string TeamName, string unitName) : base(xPosition, yPosition, InitialMelleHealth, MeleeSpeed,
+            MeleeAttack, MeleeAttackRange, TeamName, MeleeUnitSymbol, InMeleeUnitAttacking, unitName)
         {
-            XPosition = xPosition;
-            YPosition = yPosition;
         }
 
         public override void combat(int enemyAttackStrength)
@@ -129,6 +130,11 @@
         public override char returnSymbol()
         {
             return UnitSymbol;
+        }
+
+        public override string returnUnitName()
+        {
+            return UnitName;
         }
     }
 }

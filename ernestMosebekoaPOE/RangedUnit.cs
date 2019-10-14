@@ -7,9 +7,10 @@
         private const int RangedSpeed = 1;
         private const int InitialRangedHealth = 100;
         private const bool IsRangedUnitAttacking = false;
-        private const string RangedTeamName = "RangedTeam";
         private const char RangedUnitSymbol = 'R';
 
+        public const string TANK_UNIT_NAME = "Tank"; 
+        public const string CANNON_UNIT_NAME = "Cannon"; 
         private string unitActivity;
 
         public int XPosition { get => base.xPosition; set => base.xPosition = value; }
@@ -22,11 +23,10 @@
         public string Team { get => base.team; set => base.team = value; }
         public char UnitSymbol { get => base.unitSymbol; set => base.unitSymbol = value; }
         public bool IsAttacking { get => base.isAttacking; set => base.isAttacking = value; }
+        public string UnitName { get => base.unitName; set => base.unitName = value; }
         
-        public RangedUnit(int xPosition, int yPosition) : base(xPosition, yPosition, InitialRangedHealth, RangedSpeed, RangedAttack, RangedAttackRange, RangedTeamName, RangedUnitSymbol, IsRangedUnitAttacking)
+        public RangedUnit(int xPosition, int yPosition, string teamName, string unitName) : base(xPosition, yPosition, InitialRangedHealth, RangedSpeed, RangedAttack, RangedAttackRange, teamName, RangedUnitSymbol, IsRangedUnitAttacking, unitName)
         {
-            XPosition = xPosition;
-            YPosition = yPosition;
         }
 
         public override void move(int newXPosition, int newYPosition)
@@ -80,6 +80,11 @@
         public override char returnSymbol()
         {
             return UnitSymbol;
+        }
+
+        public override string returnUnitName()
+        {
+            return UnitName;
         }
     }
 }
